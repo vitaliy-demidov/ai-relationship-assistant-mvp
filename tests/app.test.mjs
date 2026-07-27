@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
+test('MVP contains local-only import and disabled sending copy',async()=>{const html=await readFile('index.html','utf8');const js=await readFile('app.js','utf8');assert.match(html,/type="file"/);assert.match(html,/Отправка сообщений отключена/);assert.match(js,/JSON.parse/);assert.match(js,/navigator\.clipboard/)});
+test('demo data has explainable recommendation inputs',async()=>{const js=await readFile('app.js','utf8');assert.match(js,/reasons/);assert.match(js,/Общая тема/);assert.match(js,/незавершённая тема/)});
